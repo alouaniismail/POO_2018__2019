@@ -1,0 +1,89 @@
+EXO1:
+Ikkakumon lien a un avec la classe Gomamon.
+1/
+privée: dans ta classe
+public: partout où la classe est instanciable
+rien: dans le même package(portée package comme lorsqu'on a enlevé les portées dans la méthode abstract du projet. (vs. Interface où on joue pas sur les portées mais via une FabriqueTec ; pas d'inclusion dans le simpleInterface.java à la fin.))
+2/
+se déroule en deux temps: tout d'abord la machive virtuelle java alloue un espace de stockage à l'objet instancié, pour ensuite appeler le constructeur de l'objet instancié pour initialiser ses attributs.
+3/
+voir le code qui compile.
+
+EXO2:
+1/
+3 manières de construire un lien est-un:
+extends héritage entre classes (classe abstraite(en entier aussi mais peut disposer d'autres choses celle qui va étendre), développer un comportement/méthode précise)
+implements entre interface et classe (implémentation du contrat/interface en entier)
+extends entre interface et interface (développer les fonctionnalitées/méthodes non implémentées de l'interface)
+
+2/
+voir code qui compile.
+
+3/
+La raison de cette contrainte sur l'ecriture du constructeur de la classe dérivée est qu'on doit respecter le mécanisme de chaînage des constructeurs(contexte pour la construction des classes filles).
+ 
+ EXO3:
+ 
+ 1/
+ Le type du this est le type de la classe courante => SorcierSupreme. Donc pour cast, le this est de type SorcierSupreme et cette variable contient l'instance mystic dans notre exemple. 
+ 
+ 2/&3/
+ C'est une liaison entre quoi et quoi d'abord:
+ Object.method(); //le point de départ.
+ =>entre le nom+parametre .method() & adresse de la méthode.
+ 
+***Liaison statique: La liaison entre l’envoi du message (nom + paramètre) et
+l’adresse de la méthode s’effectue à la compilation. Le compilateur utilise forcément le
+$$type de la variable$$ pour obtenir cette adresse.
+⇒ Variables/méthodes de classe.(***)
+[le type de la variable suffit pour obtenir l'adresse de la méthode]
+
+***Liaison dynamique: La liaison entre l’envoi du message et l’adresse
+de la méthode se fait à l’exécution, en fonction de $$l’instance manipulée$$. La
+liaison dynamique nécessite un mécanisme qui permet d’obtenir l’adresse de
+la méthode à l’exécution.
+[il nous faut l'instance manipulée pour obtenir l'adresse]
+⇒ Variables/méthodes d’instance.(***)
+
+(A retenir une bonne fois pour toutes)
+
+4/(A ne pas confondre une bonne fois pour toutes)
+
+***Redéfinition: Pour une méthode possédant déjà un corps donné dans une
+classe de base, revient à réécrire ce corps dans une classe fille (mécanisme
+d’héritage, revient à donner le même nom même nombres de
+paramètres,même ordre, même type)(possibilité d’augmentation de la portée
+de la méthode, et de “sous typage” du type de retour) <=> @Override
+
+
+***Surcharge: La surcharge de fonction est une possibilité offerte par certains
+langages de programmation de définir plusieurs fonctions ou méthodes de
+même nom, mais qui diffèrent par le nombre ou le type des paramètres
+effectifs. <=>@Overload().
+
+
+EXO4:
+
+Voir le code: astuce: tjrs aiguillage if/else if=>classe abstraite puis implémentation de ce qui est fait à l'intèrieur dans les 2 classes qui étendent cette dernière.
+Substitution d'objets: sous la classe exo4 je peux cacher d'autres instances de types différents. 
+
+
+EXO5:
+
+1/ voir le code().
+
+2/ Parce que ce serait vachement chiant s’il fallait redéfinir les classes et
+méthodes pour chaque type (duplication de code).
+
+3/                  
+
+Templates C++ vs. types génériques en java => point commun: généricité orientée objet.
+
+En java, l'incohérence du type est évité à la compilation. (vérification du type en remplçant par Object)
+
+
+->
+	En C++, les fonctions/classes génériques ne peuvent être définies que dans les en-têtes, car le compilateur génère différentes fonctions pour différents types (avec lesquels il est invoqué). La compilation est donc plus lente. 
+
+->
+	En Java, la compilation n'a pas de pénalité majeure, mais Java utilise une technique appelée "effacement" où le type générique est effacé au moment de l'exécution, donc au moment de l'exécution, Java appelle en fait le type non générique pour lequel on a remplacé l'objet pour lequel il a vérifié avant l'incohérence est aboutie ou non avant d'executer.
